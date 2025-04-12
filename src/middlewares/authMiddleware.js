@@ -13,8 +13,20 @@ module.exports = async (req, res, next) => {
 
 	try {
 		const { id } = jwt.verify(token, process.env.JWT_PASS);
-		const user = await userRepository.findById(id, ["id", "nickname", "email", "isAdmin", "createdAt"]);
-		if (!user) return res.status(401).json({ message: "Usuário não existente." });
+		const user = await userRepository.findById(id, [
+			"id",
+			"nickname",
+			"email",
+			"cep",
+			"street",
+			"neighborhood",
+			"city",
+			"state",
+			"createdAt",
+		]);
+
+		if (!user)
+			return res.status(401).json({ message: "Usuário não existente." });
 
 		req.user = user;
 		next();
