@@ -23,10 +23,30 @@ const Users = sequelize.define("Users", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  isAdmin: {
-    type: DataTypes.BOOLEAN,
+  cep: {
+    type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: false
+    trim: true,
+  },
+  street: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    trim: true,
+  },
+  neighborhood: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    trim: true,
+  },
+  city: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    trim: true,
+  },
+  state: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    trim: true,
   }
 }, {
   timestamps: true, // Cria automaticamente createdAt e updatedAt
