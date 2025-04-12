@@ -6,6 +6,35 @@ const { off } = require("../models/userModel");
 
 class FluentValidator {
 	#errors;
+	#brazilianStates = [
+        'Acre',
+        'Alagoas',
+        'Amapá',
+        'Amazonas',
+        'Bahia',
+        'Ceará',
+        'Distrito Federal',
+        'Espírito Santo',
+        'Goiás',
+        'Maranhão',
+        'Mato Grosso',
+        'Mato Grosso do Sul',
+        'Minas Gerais',
+        'Pará',
+        'Paraíba',
+        'Paraná',
+        'Pernambuco',
+        'Piauí',
+        'Rio de Janeiro',
+        'Rio Grande do Norte',
+        'Rio Grande do Sul',
+        'Rondônia',
+        'Roraima',
+        'Santa Catarina',
+        'São Paulo',
+        'Sergipe',
+        'Tocantins'
+    ];
 	constructor(){
 		this.#errors = [];
 	}
@@ -86,6 +115,33 @@ class FluentValidator {
 			})
 		}
 	}
+
+	/**
+     * 
+     * @param {string} value Valor a ser validado.
+     * @param {string} message Mensagem que será posta no array em caso de erro.
+     */
+    isCEP(value, message) {
+        const cepRegex = /^\d{5}-?\d{3}$/;
+        if (!cepRegex.test(value))
+            this.setPushError({ message: message || "CEP inválido." });
+    }
+
+    /**
+     * Valida se o estado é válido usando o nome completo
+     * @param {string} value Nome do estado a ser validado
+     * @param {string} message Mensagem que será posta no array em caso de erro
+     */
+    isState(value, message) {
+        const stateName = value.trim();
+        const isValid = this.#brazilianStates
+            .map(state => state.toLowerCase())
+            .includes(stateName.toLowerCase());
+
+        if (!isValid) {
+            this.setPushError({ message: message || "Estado inválido." });
+        }
+    }
 
 	getErrors = () => this.#errors;
 	setPushError = error => this.#errors.push(error);
