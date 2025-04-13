@@ -41,7 +41,7 @@ class UserController {
                 street,
                 neighborhood,
                 city,
-                state: state.toUpperCase()
+                state
             })
             const { password: _, ...userData } = user.toJSON();
             res.status(201).json({
