@@ -5,6 +5,7 @@
   "main": "src/app/app.js",
   "repository": "https://github.com/mgl-uhou/backend-kurumi.git",
   "author": "mgl-uhou <miguelferreiralaurentino@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "start": "node src/bin/server.js",
     "dev": "nodemon src/bin/server.js",
