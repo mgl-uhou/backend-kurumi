@@ -20,7 +20,7 @@ const swaggerDocs = {
 		{
 			url: `http://${HOST}:${PORT}`,
 			description: "API de testes para os devs.",
-		}
+		},
 	],
 	paths: {
 		"/users": {
@@ -48,7 +48,7 @@ const swaggerDocs = {
 									},
 									cep: {
 										type: "string",
-										example: "57000-000",
+										example: "57000123",
 									},
 									street: {
 										type: "string",
@@ -138,7 +138,7 @@ const swaggerDocs = {
 									},
 									cep: {
 										type: "string",
-										example: "57000-000",
+										example: "57000123",
 									},
 									street: {
 										type: "string",
@@ -318,7 +318,7 @@ const swaggerDocs = {
 					id: "1",
 					nickname: "JohnDoe",
 					email: "john.doe@gmail.com",
-					cep: "57000-000",
+					cep: "57000123",
 					street: "Rua Example",
 					neighborhood: "Centro",
 					city: "Maceió",
